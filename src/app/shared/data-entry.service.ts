@@ -6,16 +6,16 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class DataEntryService {
 
-  datalist: AngularFireList<any>;
+  achievementDatalist: AngularFireList<any>;
   constructor(private firebasedb: AngularFireDatabase) { }
 
-  getDataList(tableName){
-    this.datalist = this.firebasedb.list(tableName);
-    return this.datalist;
+  getAchievementDataList(){
+    this.achievementDatalist = this.firebasedb.list('achievement');
+    return this.achievementDatalist;
   }
 
-  addDataEntry(entry,tableName){
-    this.datalist.push({
+  addAchievementDataEntry(entry,bleName){
+    this.achievementDatalist.push({
 
     })
   }
