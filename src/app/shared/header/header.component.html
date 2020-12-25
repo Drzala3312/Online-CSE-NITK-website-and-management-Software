@@ -1,1 +1,26 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+  <a class="navbar-brand" href="#/home">
+    <img class="img-fluid img-profile" style="width: 20%;" src="assets/images/220px-NITK_Emblem.png" alt="" /> CSE-NITK</a>
+  <br>
+  <br>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li  [ngClass]="{'active': headerActive === '/home' || headerActive === '/'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/home">Home</a></li>
+      <li [ngClass]="{'active': headerActive === '/programme-and-courses'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/programme-and-courses">Programme And Courses</a></li>
+      <li [ngClass]="{'active': headerActive === '/faculties'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/faculties">Faculties</a></li>
+      <li [ngClass]="{'active': headerActive === '/research'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/research">Research</a></li>
+
+      <li [ngClass]="{'active': headerActive === '/achievements'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/achievements">Achievements</a></li>
+      <li [ngClass]="{'active': headerActive === '/data-entry'}" class="nav-item"><a class="nav-link js-scroll-trigger" href="#/data-entry">Data-Entry</a></li>
+
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav>

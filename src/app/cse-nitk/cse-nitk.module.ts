@@ -7,11 +7,11 @@ import { ProgrammeAndCoursesComponent } from './components/programme-and-courses
 import { FacultiesComponent } from './components/faculties/faculties.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { ResearchComponent } from './components/research/research.component';
-import { DateEntryComponent } from './components/date-entry/date-entry.component';
+import { DataEntryComponent } from './components/data-entry/data-entry.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ProgrammeAndCoursesComponent, FacultiesComponent, AchievementsComponent, ResearchComponent, DateEntryComponent],
+  declarations: [HomeComponent, ProgrammeAndCoursesComponent, FacultiesComponent, AchievementsComponent, ResearchComponent, DataEntryComponent],
   imports: [
     CommonModule,
     CseNitkRoutingModule

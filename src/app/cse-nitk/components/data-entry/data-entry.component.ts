@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-date-entry',
-  templateUrl: './date-entry.component.html',
-  styleUrls: ['./date-entry.component.scss']
+  templateUrl: './data-entry.component.html',
+  styleUrls: ['./data-entry.component.scss']
 })
-export class DateEntryComponent implements OnInit {
+export class DataEntryComponent implements OnInit {
 
   constructor() { }
 
