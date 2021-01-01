@@ -8,10 +8,11 @@ import { FacultiesComponent } from './components/faculties/faculties.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { ResearchComponent } from './components/research/research.component';
 import { DataEntryComponent } from './components/data-entry/data-entry.component';
+import { DeptComponent } from './components/achievements/dept/dept.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ProgrammeAndCoursesComponent, FacultiesComponent, AchievementsComponent, ResearchComponent, DataEntryComponent],
+  declarations: [HomeComponent, ProgrammeAndCoursesComponent, FacultiesComponent, AchievementsComponent, ResearchComponent, DataEntryComponent, DeptComponent],
   imports: [
     CommonModule,
     CseNitkRoutingModule
