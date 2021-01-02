@@ -5,6 +5,8 @@ import { AchievementsComponent } from './components/achievements/achievements.co
 import { DataEntryComponent } from './components/data-entry/data-entry.component';
 import { FacultiesComponent } from './components/faculties/faculties.component';
 import { HomeComponent } from './components/home/home.component';
+import { PgDetailComponent } from './components/programme-and-courses/postgraduate/pg-detail/pg-detail.component';
+import { PgListComponent } from './components/programme-and-courses/postgraduate/pg-list/pg-list.component';
 import { ProgrammeAndCoursesComponent } from './components/programme-and-courses/programme-and-courses.component';
 import { ResearchComponent } from './components/research/research.component';
 import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component'
@@ -20,7 +22,17 @@ const routes: Routes = [
 },
 {
   path:'programme-and-courses',
-  component:ProgrammeAndCoursesComponent
+  component:ProgrammeAndCoursesComponent,
+  children:[
+    {
+      path:'pg-list',
+      component:PgListComponent,
+    },
+    {
+      path:'pg-detail',
+      component:PgDetailComponent
+    }
+  ]
 },
 {
   path:'faculties',
@@ -42,6 +54,9 @@ const routes: Routes = [
   path:'news-entry',
   component:NewsEntryComponent
 },
+  path: '**',
+  component:HomeComponent
+}
 ];
 
 @NgModule({

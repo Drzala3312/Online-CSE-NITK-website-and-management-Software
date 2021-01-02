@@ -1,0 +1,29 @@
+.<ng-container>
+  <mat-form-field>
+    <mat-select [(ngModel)]="prog" [(value)]="prog"
+    placeholder="Programme" >
+    <mat-option value="">All</mat-option>
+    <mat-option value="CSE">M. tech (CSE)</mat-option>
+    <mat-option value="CSE-IS">M. tech (CSE-IS)</mat-option>
+  </mat-select>
+  </mat-form-field> &nbsp; &nbsp;
+  <mat-form-field>
+    <mat-select [(ngModel)]="sem" [(value)]="sem"
+    placeholder="Semester">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let item of pgSems" value="{{item}}" >{{item}}</mat-option>
+  </mat-select>
+  </mat-form-field> &nbsp; &nbsp;
+  <mat-form-field>
+    <mat-select [(ngModel)]="category" [(value)]="category"
+    placeholder="Category">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let item of pgCategory" value="{{item}}" >{{item}}</mat-option>
+  </mat-select>
+  </mat-form-field> &nbsp; &nbsp;
+</ng-container>
+
+<mat-list role="list">
+  <mat-list-item role="listitem"  *ngFor="let course of pgProgListArr | filter: prog:sem:category" ><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;{{course.courseName}}</mat-list-item>
+
+</mat-list>
