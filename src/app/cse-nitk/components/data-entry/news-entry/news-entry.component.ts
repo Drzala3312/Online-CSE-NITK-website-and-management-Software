@@ -11,8 +11,12 @@ export class NewsEntryComponent implements OnInit {
   newsList: AngularFireList<any>;
   items = [];
   pageOfItems: Array<any>;
+  isUpdate: boolean;
+  key: string;
 
-  constructor(private firebasedb: AngularFireDatabase) { }
+  constructor(private firebasedb: AngularFireDatabase) {
+    this.isUpdate = false;
+   }
 
   ngOnInit() {
     this.getNewsAndEvents().snapshotChanges().subscribe(item=>{
@@ -46,6 +50,7 @@ export class NewsEntryComponent implements OnInit {
   }
 
   clearData(title,content,link,linktext){
+    this.isUpdate = false;
     title.value = null;
     content.value = null;
     link.value = null;
@@ -53,10 +58,36 @@ export class NewsEntryComponent implements OnInit {
   }
   deleteNews(key)
   {
-    this.firebasedb.list('news-and-events').remove(key).then(res=>{
-      console.log("Deleted");
-    }).catch(err=>{
-      console.log("err");
-    })
+    if(confirm('Are you Sure!')){
+      this.firebasedb.list('news-and-events').remove(key).then(res=>{
+        console.log("Deleted");
+      }).catch(err=>{
+        console.log("err");
+      })
+    }
+
+  }
+  // Edit Icon Event
+  editNews(item,title,content,link,linktext)
+  {
+    this.isUpdate = true;
+    title.value = item.title;
+    content.value = item.content;
+    link.value = item.link;
+    linktext.value = item.linktext;
+    this.key = item.$key;
+  }
+  
+
+  //Update button event
+   updateNewsAndEvents(title,content,link,linktext){
+     var item =  {
+      title: title.value,
+      content: content.value,
+      link: link.value,
+      linktext: linktext.value
+     }
+     this.firebasedb.list('news-and-events').update(this.key,item);
+     this.clearData(title,content,link,linktext);
   }
 }
