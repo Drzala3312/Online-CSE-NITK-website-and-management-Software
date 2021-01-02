@@ -54,8 +54,9 @@ const routes: Routes = [
   path:'news-entry',
   component:NewsEntryComponent
 },
+{
   path: '**',
-  component:HomeComponent
+  component: HomeComponent
 }
 ];
 
