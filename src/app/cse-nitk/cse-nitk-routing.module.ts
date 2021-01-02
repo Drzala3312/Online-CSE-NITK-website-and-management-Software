@@ -7,8 +7,7 @@ import { FacultiesComponent } from './components/faculties/faculties.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProgrammeAndCoursesComponent } from './components/programme-and-courses/programme-and-courses.component';
 import { ResearchComponent } from './components/research/research.component';
-
-
+import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component'
 const routes: Routes = [
 {
   path: '',
@@ -38,6 +37,10 @@ const routes: Routes = [
 {
   path:'data-entry',
   component:DataEntryComponent
+},
+{
+  path:'news-entry',
+  component:NewsEntryComponent
 },
 ];
 

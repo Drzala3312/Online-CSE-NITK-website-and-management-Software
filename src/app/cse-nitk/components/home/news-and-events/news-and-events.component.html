@@ -1,0 +1,13 @@
+<div class="card">
+    <h4 class="card-header text-center">News and Upcoming Events</h4>
+    <div class="card-body">
+        <div *ngFor="let item of pageOfItems">
+            {{item.title}} {{item.content}}
+            <a href="{{item.link}}">{{item.linktext}}</a>
+            <hr>
+        </div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+        <jw-pagination [items]="items" (changePage)="onChangePage($event)" [pageSize]=4 [maxPages]=3></jw-pagination>
+    </div>
+</div>
