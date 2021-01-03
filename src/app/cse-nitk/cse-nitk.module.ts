@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from '../shared/filter.pipe';
+import {MatButtonModule} from '@angular/material/button';
 
 import { CseNitkRoutingModule } from './cse-nitk-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -55,6 +56,7 @@ import { NewsAndEventsComponent } from './components/home/news-and-events/news-a
     MatToolbarModule,
     MatTabsModule,
     MatIconModule,
+    MatButtonModule,
     JwPaginationModule
   ]
 })

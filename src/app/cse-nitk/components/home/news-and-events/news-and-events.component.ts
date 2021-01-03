@@ -25,7 +25,7 @@ export class NewsAndEventsComponent implements OnInit {
   }
 
   getNewsAndEvents() {
-    this.newsList = this.firebasedb.list('news-and-events');
+    this.newsList = this.firebasedb.list('news-and-events',ref => ref.orderByChild('timestamp'));
     return this.newsList;
   }
 

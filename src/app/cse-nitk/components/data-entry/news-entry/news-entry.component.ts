@@ -6,6 +6,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
   templateUrl: './news-entry.component.html',
   styleUrls: ['./news-entry.component.scss']
 })
+
 export class NewsEntryComponent implements OnInit {
 
   newsList: AngularFireList<any>;
@@ -27,10 +28,14 @@ export class NewsEntryComponent implements OnInit {
         this.items.push(x);
       })
     });
+    //reverse the array
+    this.items = this.items.map(item => {
+      return item.reverse();
+    });
   }
 
   getNewsAndEvents() {
-    this.newsList = this.firebasedb.list('news-and-events');
+    this.newsList = this.firebasedb.list('news-and-events',ref => ref.orderByChild('timestamp'));
     return this.newsList;
   }
 
@@ -44,7 +49,8 @@ export class NewsEntryComponent implements OnInit {
         title: title.value,
         content: content.value,
         link: link.value,
-        linktext: linktext.value
+        linktext: linktext.value,
+        timestamp: Date.now()*-1
       });
       this.clearData(title,content,link,linktext);
   }
