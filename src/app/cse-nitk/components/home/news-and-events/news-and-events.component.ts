@@ -14,7 +14,7 @@ export class NewsAndEventsComponent implements OnInit {
   constructor(private firebasedb: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.getNewsAndEvents().snapshotChanges().subscribe(item=>{
+    this.getNewsAndEvents().snapshotChanges().subscribe(item => {
       this.items = [];
       item.forEach(element => {
         var x = element.payload.toJSON();
@@ -25,13 +25,30 @@ export class NewsAndEventsComponent implements OnInit {
   }
 
   getNewsAndEvents() {
-    this.newsList = this.firebasedb.list('news-and-events',ref => ref.orderByChild('timestamp'));
+    this.newsList = this.firebasedb.list('news-and-events', ref => ref.orderByChild('timestamp'));
     return this.newsList;
   }
 
   onChangePage(pageOfItems: Array<any>) {
-      // update current page of items
-      this.pageOfItems = pageOfItems;
+    // update current page of items
+    this.pageOfItems = pageOfItems;
   }
 
+  pageIndex: number = 0;
+  pageSize: number = 10;
+  lowValue: number = 0;
+  highValue: number = 10;
+
+  getPaginatorData(event) {
+    console.log(event);
+    if (event.pageIndex === this.pageIndex + 1) {
+      this.lowValue = this.lowValue + this.pageSize;
+      this.highValue = this.highValue + this.pageSize;
+    }
+    else if (event.pageIndex === this.pageIndex - 1) {
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue = this.highValue - this.pageSize;
+    }
+    this.pageIndex = event.pageIndex;
+  }
 }
