@@ -22,7 +22,6 @@ export class FacultiesComponent implements OnInit {
         var x = element.payload.toJSON();
         x["$key"] = element.key;
         this.items.push(x);
-        console.log(x);
       })
     });
   }
