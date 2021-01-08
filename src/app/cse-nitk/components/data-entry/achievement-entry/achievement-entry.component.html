@@ -1,22 +1,45 @@
-<div style="margin: 20px 20px; text-align: center;">
-  <h3>Achievement Entry</h3>
-  <form [formGroup]='achievementForm' (ngSubmit)="onSubmit()">
-    <div>
-      <select formControlName='type' style="width: 550px; margin-bottom: 5px;">
-        <option value="" disabled selected>Select type of Achievement</option>
-        <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
-      </select>
+<div class="container-fluid">
+  <div class="row" style="margin: 20px 20px 20px 20px;">
+    <div class="col-6 text-center">
+      <div>
+        <h3>Achievement Entry</h3>
+        <form [formGroup]='achievementForm' (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <select formControlName='type' class="form-control" >
+              <option value="" disabled selected>Select type of Achievement</option>
+              <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" formControlName="content" placeholder="Content" ></textarea>
+          </div>
+          <button type="submit" mat-raised-button color="primary"  [ngClass]="{'disabled':!achievementForm.valid}"
+            [disabled]="!achievementForm.valid">Submit</button> &nbsp;
+
+            <button mat-raised-button color="warn" (click)="clearData()">Clear</button> &nbsp;
+            <a [routerLink]="['/data-entry']" class="btn btn-primary">
+              Cancel
+            </a>
+        </form>
+      </div>
     </div>
-    <div>
-      <textarea style="width: 550px;" formControlName="content" placeholder="Content" rows="4" #content></textarea>
+    <div class="col-6">
+      <div class="card">
+        <h4 class="card-header">Achievements</h4>
+        <div class="card-body">
+            <div *ngFor="let item of achievArr">
+               <b> {{item.type}} Achievement:</b> {{item.content}}
+                <i (click)="editAchieve(item)" class="fa fa-pencil"
+                    style="cursor: pointer;" title="Edit"></i> &nbsp;
+                <i (click)="deleteAchieve(item.$key)" class="fa fa-trash" style="cursor: pointer;" title="Delete"></i>
+                <hr>
+            </div>
+        </div>
+
     </div>
-    <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!achievementForm.valid}"
-      [disabled]="!achievementForm.valid">Submit</button>
-    <a [routerLink]="['/data-entry']" class="btn btn-primary">
-      Cancel
-    </a>
-  </form>
 
+    </div>
 
-
+  </div>
 </div>
+
