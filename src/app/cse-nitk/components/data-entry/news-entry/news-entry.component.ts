@@ -71,7 +71,6 @@ export class NewsEntryComponent implements OnInit {
         console.log("err");
       })
     }
-
   }
   // Edit Icon Event
   editNews(item,title,content,link,linktext)

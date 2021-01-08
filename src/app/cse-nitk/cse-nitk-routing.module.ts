@@ -9,7 +9,8 @@ import { PgDetailComponent } from './components/programme-and-courses/postgradua
 import { PgListComponent } from './components/programme-and-courses/postgraduate/pg-list/pg-list.component';
 import { ProgrammeAndCoursesComponent } from './components/programme-and-courses/programme-and-courses.component';
 import { ResearchComponent } from './components/research/research.component';
-import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component'
+import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component';
+import { FacultiesEntryComponent } from './components/data-entry/faculties-entry/faculties-entry.component';
 const routes: Routes = [
 {
   path: '',
@@ -53,6 +54,10 @@ const routes: Routes = [
 {
   path:'news-entry',
   component:NewsEntryComponent
+},
+{
+  path: 'faculties-entry',
+  component: FacultiesEntryComponent
 },
 {
   path: '**',
