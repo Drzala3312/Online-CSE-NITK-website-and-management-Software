@@ -1,13 +1,18 @@
+import { query } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataEntryService {
 
-  achievementDatalist: AngularFireList<any>;
   progCourse: AngularFireList<any>;
+  achievementDatalist: AngularFireList<any>;
+  facultiesList: AngularFireList<any>;
+
   types = ['Postgraduate', 'Undergraduate', 'Doctoral'];
   ugCategory = [
     'Engineering Science Core (ESC)',
@@ -26,6 +31,7 @@ export class DataEntryService {
 
   ugSems = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth'];
   pgSems = ['First', 'Second', 'Third', 'Fourth'];
+
   constructor(private firebasedb: AngularFireDatabase) { }
 
 
@@ -79,4 +85,22 @@ export class DataEntryService {
     }
   }
 
+  getFacultiesList() {
+    this.facultiesList = this.firebasedb.list('faculties');
+    return this.facultiesList;
+  }
+
+  addFaculties(entry){
+    this.facultiesList = this.firebasedb.list('faculties');
+    this.facultiesList.push(entry);
+  }
+
+  deleteFaculties(key)
+  {
+    this.firebasedb.list('faculties').remove(key).then(res=>{
+      console.log("Deleted");
+    }).catch(err=>{
+      console.log("err");
+    })
+  }
 }

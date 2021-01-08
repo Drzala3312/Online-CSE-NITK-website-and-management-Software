@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from '../shared/filter.pipe';
+import {MatButtonModule} from '@angular/material/button';
 import { FilterUgPipe } from '../shared/filter-ug.pipe';
 
 import { CseNitkRoutingModule } from './cse-nitk-routing.module';
@@ -25,6 +26,7 @@ import { DeptComponent } from './components/achievements/dept/dept.component';
 import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NewsAndEventsComponent } from './components/home/news-and-events/news-and-events.component';
+import { FacultiesEntryComponent } from './components/data-entry/faculties-entry/faculties-entry.component';
 import { ResearchAndDevComponent } from './components/research/research-and-dev/research-and-dev.component';
 import { MouComponent } from './components/research/mou/mou.component';
 import { ConsultancyComponent } from './components/research/consultancy/consultancy.component';
@@ -55,6 +57,7 @@ import { PattentComponent } from './components/achievements/pattent/pattent.comp
     FilterUgPipe,
     NewsEntryComponent,
     NewsAndEventsComponent,
+    FacultiesEntryComponent,
     ResearchAndDevComponent,
     MouComponent,
     ConsultancyComponent,
@@ -80,6 +83,7 @@ import { PattentComponent } from './components/achievements/pattent/pattent.comp
     MatToolbarModule,
     MatTabsModule,
     MatIconModule,
+    MatButtonModule,
     JwPaginationModule
   ]
 })

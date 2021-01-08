@@ -1,30 +1,41 @@
+<div class="container-fluid">
+    <div class="row" style="margin: 20px 20px 20px 20px;">
+        <div class="col-6 text-center">
+            <div>
+                <h3>Add new News and Events</h3>
+                <input class="form-control " type="text" style="width: 80%; margin-left: 10%;" placeholder="Title" #title><br>
+                <textarea class="form-control" style="width: 80%; margin-left: 10%;" placeholder="Content" rows="4"
+                    #content></textarea><br>
+                <input class="form-control" type="text" placeholder="Link" style="width: 80%; margin-left: 10%;"
+                    #link><br>
+                <input class="form-control" type="text" placeholder="Link Text" style="width: 80%; margin-left: 10%;" #linktext><br><br>
+                <button mat-raised-button color="primary" *ngIf="!isUpdate"
+                    (click)="addNewsAndEvents(title,content,link,linktext)">Add</button> &nbsp;
+                <button mat-raised-button color="primary" *ngIf="isUpdate"
+                    (click)="updateNewsAndEvents(title,content,link,linktext)">Update</button> &nbsp;
+                <button mat-raised-button color="warn" (click)="clearData(title,content,link,linktext)">Clear</button>
+            </div>
+        </div>
 
-
-<div style="margin: 20px 20px; text-align: center;">
-    <h3>News and Upcoming Events Entry</h3>
-    <input type="text" placeholder="Title" style="width: 550px; margin-bottom: 5px;" #title><br>
-    <textarea style="width: 550px;" placeholder="Content" rows="4" #content></textarea><br>
-    <input type="text" placeholder="Link" style="width: 550px; margin-bottom: 5px;" #link><br>
-    <input type="text" placeholder="Link Text" style="width: 550px;" #linktext><br><br>
-    <button *ngIf="!isUpdate" (click) = "addNewsAndEvents(title,content,link,linktext)">Add</button> &nbsp;
-    <button *ngIf="isUpdate" (click) = "updateNewsAndEvents(title,content,link,linktext)">Update</button> &nbsp;
-    <button (click) = "clearData(title,content,link,linktext)">Clear</button>
-
-</div>
-
-<div class="card" style="margin-left: 30px; margin-right: 30px; margin-bottom: 5px;">
-    <h4 class="card-header">News and Upcoming Events</h4>
-    <div class="card-body">
-        <div *ngFor="let item of pageOfItems">
-            {{item.title}} {{item.content}}
-            <a href="{{item.link}}">{{item.linktext}}</a> &nbsp;
-            <i (click)="editNews(item,title,content,link,linktext)" class="fa fa-pencil" style="cursor: pointer;"></i> &nbsp;
-            <i (click)="deleteNews(item.$key)" class="fa fa-trash" style="cursor: pointer;"></i>
-            <hr>
+        <div class="col-6">
+            <div class="card">
+                <h4 class="card-header">News and Upcoming Events</h4>
+                <div class="card-body">
+                    <div *ngFor="let item of pageOfItems">
+                        {{item.title}} {{item.content}}
+                        <a href="{{item.link}}">{{item.linktext}}</a> &nbsp;
+                        <i (click)="editNews(item,title,content,link,linktext)" class="fa fa-pencil"
+                            style="cursor: pointer;" title="Edit"></i> &nbsp;
+                        <i (click)="deleteNews(item.$key)" class="fa fa-trash" style="cursor: pointer;" title="Delete"></i>
+                        <hr>
+                    </div>
+                </div>
+                <div class="card-footer pb-0 pt-3 pr-1">
+                    <jw-pagination [items]="items" (changePage)="onChangePage($event)" [pageSize]=5 [maxPages]=3>
+                    </jw-pagination>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card-footer pb-0 pt-3 pr-1">
-        <jw-pagination [items]="items" (changePage)="onChangePage($event)" [pageSize]=5 [maxPages]=3></jw-pagination>
-    </div>
+
 </div>
-<br>

@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col">
+        <form [formGroup]='facultiesForm' (ngSubmit)="onSubmit()">
+            <div style="width: 80%; margin-left: 10%;">
+                <div class="form-group">
+                    <h2>Programme and Courses</h2>
+                    <label for="type">Type</label>&nbsp;&nbsp;
+                    <select class="form-control" formControlName='type' (change)="onChange($event)">
+                        <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sem">Designation</label>
+                    <select class="form-control" formControlName='designation'>
+                        <ng-container *ngIf="typeValue === 'Faculty'">
+                            <option *ngFor="let item of faculty" value="{{item}}">{{item}}</option>
+                        </ng-container>
+
+                        <ng-container *ngIf="typeValue === 'Adhoc'">
+                            <option *ngFor="let item of adhoc" value="{{item}}">{{item}}</option>
+                        </ng-container>
+
+                        <ng-container *ngIf="typeValue === 'Staff'">
+                            <option *ngFor="let item of staff" value="{{item}}">{{item}}</option>
+                        </ng-container>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName='name'>
+                </div>
+                <div class="form-group">
+                    <input type="file" class="form-control" accept="image/*" (change)="selectFile($event)">
+                </div>
+                <button type="submit" mat-raised-button color="primary" [ngClass]="{'disabled':!facultiesForm.valid}"
+                    [disabled]="!facultiesForm.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <div style="margin: 20px 20px 20px 20px;">
+            <mat-tab-group>
+                <mat-tab label="Faculty">
+                    <br>
+                    <ng-container *ngFor="let element of faculty">
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <div class="row">
+                            <ng-container *ngFor="let item of items">
+                                <div class="col-sm-6 col-md-4"
+                                    *ngIf="item.type == 'Faculty' && item.designation == element">
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <br>
+                    </ng-container>
+                </mat-tab>
+                <mat-tab label="Adhoc Faculty">
+                    <br>
+                    <ng-container *ngFor="let element of adhoc">
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <div class="row">
+                            <ng-container *ngFor="let item of items">
+                                <div class="col-sm-6 col-md-4"
+                                    *ngIf="item.type == 'Adhoc' && item.designation == element">
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <br>
+                    </ng-container>
+                </mat-tab>
+                <mat-tab label="Staff">
+                    <br>
+                    <ng-container *ngFor="let element of staff">
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <div class="row">
+                            <ng-container *ngFor="let item of items">
+                                <div class="col-sm-6 col-md-4"
+                                    *ngIf="item.type == 'Staff' && item.designation == element">
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <br>
+                    </ng-container>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
