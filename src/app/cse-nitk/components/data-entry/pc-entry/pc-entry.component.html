@@ -1,0 +1,77 @@
+<div class="container content">
+
+  <form [formGroup]='programmeCoursesForm' (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h2>Programme and Courses</h2>
+      <label for="type">Type</label>&nbsp;&nbsp;
+      <select class="form-control" formControlName='type' (change)="onChange($event)">
+        <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="courseName">Course Name:</label>
+      <input type="text" formControlName='courseName' class="form-control">
+    </div>
+
+    <ng-container *ngIf="typeValue === 'Undergraduate'">
+      <div class="form-group">
+        <label for="sem">Semester</label>
+        <select class="form-control" formControlName='sem'>
+          <option *ngFor="let item of ugSems" value="{{item}}">{{item}}</option>
+        </select>
+        <div class="form-group">
+          <label for="category">Category: </label>
+          <select class="form-control" formControlName='category'>
+            <option *ngFor="let item of ugCategory" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="typeValue === 'Postgraduate'">
+      <div class="form-group">
+        <label for="programme">Programme</label>
+        <select class="form-control" formControlName='programme'>
+          <option value="CSE">M. tech (CSE)</option>
+          <option value="CSE-IS">M. tech (CSE-IS)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sem">Semester</label>
+        <select class="form-control" formControlName='sem'>
+          <option *ngFor="let item of pgSems" value="{{item}}">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="category">Category: </label>
+        <select class="form-control" formControlName='category'>
+          <option *ngFor="let item of pgCategory" value="{{item}}">{{item}}</option>
+        </select>
+      </div>
+    </ng-container>
+
+
+    <div class="form-group">
+      <label for="credit">Credit(L-T-P): </label>
+      <input type="text" formControlName="credits" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="content">Content: </label>
+      <textarea formControlName="content" class="form-control" cols="30" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="ref">References: </label>
+      <textarea formControlName="ref" class="form-control" cols="30" rows="5"></textarea>
+
+    </div>
+    <div class="form-group">
+      <label for="dept">Department: </label>
+      <input type="text" formControlName="dept" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!programmeCoursesForm.valid}"
+      [disabled]="!programmeCoursesForm.valid">Submit</button>
+      <a [routerLink]="['/data-entry']" class="btn btn-primary">
+        Cancel
+    </a>
+  </form>
+</div>

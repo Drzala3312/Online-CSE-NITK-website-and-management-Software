@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from '../shared/filter.pipe';
+import { FilterUgPipe } from '../shared/filter-ug.pipe';
 
 import { CseNitkRoutingModule } from './cse-nitk-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -27,6 +28,12 @@ import { NewsAndEventsComponent } from './components/home/news-and-events/news-a
 import { ResearchAndDevComponent } from './components/research/research-and-dev/research-and-dev.component';
 import { MouComponent } from './components/research/mou/mou.component';
 import { ConsultancyComponent } from './components/research/consultancy/consultancy.component';
+import { PcEntryComponent } from './components/data-entry/pc-entry/pc-entry.component';
+import { UgDetailComponent } from './components/programme-and-courses/undergraduate/ug-detail/ug-detail.component';
+import { UgListComponent } from './components/programme-and-courses/undergraduate/ug-list/ug-list.component';
+import { DrListComponent } from './components/programme-and-courses/doctoral/dr-list/dr-list.component';
+import { DrDetailComponent } from './components/programme-and-courses/doctoral/dr-detail/dr-detail.component';
+
 
 
 
@@ -42,11 +49,17 @@ import { ConsultancyComponent } from './components/research/consultancy/consulta
     PgListComponent,
     PgDetailComponent,
     FilterPipe,
+    FilterUgPipe,
     NewsEntryComponent,
     NewsAndEventsComponent,
     ResearchAndDevComponent,
     MouComponent,
-    ConsultancyComponent
+    ConsultancyComponent,
+    PcEntryComponent,
+    UgDetailComponent,
+    UgListComponent,
+    DrListComponent,
+    DrDetailComponent
   ],
   imports: [
     CommonModule,

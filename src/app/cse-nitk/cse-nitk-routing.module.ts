@@ -10,6 +10,11 @@ import { PgListComponent } from './components/programme-and-courses/postgraduate
 import { ProgrammeAndCoursesComponent } from './components/programme-and-courses/programme-and-courses.component';
 import { ResearchComponent } from './components/research/research.component';
 import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component'
+import { PcEntryComponent } from './components/data-entry/pc-entry/pc-entry.component';
+import { UgListComponent } from './components/programme-and-courses/undergraduate/ug-list/ug-list.component';
+import { UgDetailComponent } from './components/programme-and-courses/undergraduate/ug-detail/ug-detail.component';
+import { DrListComponent } from './components/programme-and-courses/doctoral/dr-list/dr-list.component';
+import { DrDetailComponent } from './components/programme-and-courses/doctoral/dr-detail/dr-detail.component';
 const routes: Routes = [
 {
   path: '',
@@ -23,16 +28,29 @@ const routes: Routes = [
 {
   path:'programme-and-courses',
   component:ProgrammeAndCoursesComponent,
-  children:[
-    {
-      path:'pg-list',
-      component:PgListComponent,
-    },
-    {
-      path:'pg-detail',
-      component:PgDetailComponent
-    }
-  ]
+}, {
+  path:'pg-list',
+  component:PgListComponent,
+},
+{
+  path:'pg-detail',
+  component:PgDetailComponent
+},
+{
+  path:'ug-list',
+  component:UgListComponent
+},
+{
+  path:'ug-detail',
+  component:UgDetailComponent
+},
+{
+  path:'dr-list',
+  component:DrListComponent
+},
+{
+  path:'dr-detail',
+  component:DrDetailComponent
 },
 {
   path:'faculties',
@@ -53,6 +71,10 @@ const routes: Routes = [
 {
   path:'news-entry',
   component:NewsEntryComponent
+},
+{
+  path:'pc-entry',
+  component:PcEntryComponent
 },
 {
   path: '**',
