@@ -1,0 +1,6 @@
+
+<mat-list role="list" >
+  <mat-list-item role="listitem"  *ngFor="let course of drProgListArr " >
+      <a  (click)="onDetailList(course.courseName)" style="cursor: pointer;"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;{{course.courseName}}</a>
+  </mat-list-item>
+</mat-list>

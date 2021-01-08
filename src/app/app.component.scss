@@ -1,0 +1,10 @@
+
+.content {
+  position:relative; /* needed for footer positioning*/
+  margin:0 auto; /* center, not in IE5 */
+
+  height:auto !important; /* real browsers */
+  height:100%; /* IE6: treaded as min-height*/
+
+  min-height:100%; /* real browsers */
+}

@@ -1,0 +1,23 @@
+.<ng-container>
+  <mat-form-field>
+    <mat-select [(ngModel)]="sem" [(value)]="sem"
+    placeholder="Semester">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let item of ugSems" value="{{item}}" >{{item}}</mat-option>
+  </mat-select>
+  </mat-form-field> &nbsp; &nbsp;
+  <mat-form-field>
+    <mat-select [(ngModel)]="category" [(value)]="category"
+    placeholder="Category">
+    <mat-option value="">All</mat-option>
+    <mat-option *ngFor="let item of ugCategory" value="{{item}}" >{{item}}</mat-option>
+  </mat-select>
+  </mat-form-field> &nbsp; &nbsp;
+</ng-container>
+
+<mat-list role="list">
+  <mat-list-item role="listitem"  *ngFor="let course of ugProgListArr | filterUg:sem:category" >
+    <a  (click)="onDetailList(course.courseName)" style="cursor: pointer;"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;{{course.courseName}}</a>
+  </mat-list-item>
+
+</mat-list>

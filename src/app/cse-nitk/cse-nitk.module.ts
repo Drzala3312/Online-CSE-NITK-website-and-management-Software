@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from '../shared/filter.pipe';
 import {MatButtonModule} from '@angular/material/button';
+import { FilterUgPipe } from '../shared/filter-ug.pipe';
 
 import { CseNitkRoutingModule } from './cse-nitk-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -26,6 +27,18 @@ import { NewsEntryComponent } from './components/data-entry/news-entry/news-entr
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NewsAndEventsComponent } from './components/home/news-and-events/news-and-events.component';
 import { FacultiesEntryComponent } from './components/data-entry/faculties-entry/faculties-entry.component';
+import { ResearchAndDevComponent } from './components/research/research-and-dev/research-and-dev.component';
+import { MouComponent } from './components/research/mou/mou.component';
+import { ConsultancyComponent } from './components/research/consultancy/consultancy.component';
+import { PcEntryComponent } from './components/data-entry/pc-entry/pc-entry.component';
+import { UgDetailComponent } from './components/programme-and-courses/undergraduate/ug-detail/ug-detail.component';
+import { UgListComponent } from './components/programme-and-courses/undergraduate/ug-list/ug-list.component';
+import { DrListComponent } from './components/programme-and-courses/doctoral/dr-list/dr-list.component';
+import { DrDetailComponent } from './components/programme-and-courses/doctoral/dr-detail/dr-detail.component';
+import { AchievementEntryComponent } from './components/data-entry/achievement-entry/achievement-entry.component';
+import { StudentComponent } from './components/achievements/student/student.component';
+import { PattentComponent } from './components/achievements/pattent/pattent.component';
+
 
 
 
@@ -41,9 +54,21 @@ import { FacultiesEntryComponent } from './components/data-entry/faculties-entry
     PgListComponent,
     PgDetailComponent,
     FilterPipe,
+    FilterUgPipe,
     NewsEntryComponent,
     NewsAndEventsComponent,
-    FacultiesEntryComponent
+    FacultiesEntryComponent,
+    ResearchAndDevComponent,
+    MouComponent,
+    ConsultancyComponent,
+    PcEntryComponent,
+    UgDetailComponent,
+    UgListComponent,
+    DrListComponent,
+    DrDetailComponent,
+    AchievementEntryComponent,
+    StudentComponent,
+    PattentComponent
   ],
   imports: [
     CommonModule,

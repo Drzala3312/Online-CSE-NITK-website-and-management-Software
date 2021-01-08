@@ -41,10 +41,9 @@ export class DataEntryService {
     return this.achievementDatalist;
   }
 
-  addAchievementDataEntry(entry, bleName) {
-    this.achievementDatalist.push({
-
-    })
+  addAchievementDataEntry(entry) {
+    this.achievementDatalist = this.firebasedb.list('achievement');
+    this.achievementDatalist.push(entry)
   }
 
   getProgrammeCourseList() {

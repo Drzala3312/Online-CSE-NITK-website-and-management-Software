@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "online-cse-nitk"
+  "defaultProject": "online-cse-nitk",
+  "cli": {
+    "analytics": "67687b85-0b9b-4ade-a33a-411d2fa724f5"
+  }
 }

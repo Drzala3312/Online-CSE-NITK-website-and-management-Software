@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataEntryService } from 'src/app/shared/data-entry.service';
+import { DataEntryService } from '../../../../../shared/data-entry.service';
 
 @Component({
   selector: 'app-pg-list',
@@ -8,7 +8,6 @@ import { DataEntryService } from 'src/app/shared/data-entry.service';
   styleUrls: ['./pg-list.component.scss']
 })
 export class PgListComponent implements OnInit {
-  isNoData = false;
   prog = '';
   sem = '';
   category = '';
@@ -26,16 +25,16 @@ export class PgListComponent implements OnInit {
         x["$key"] = element.key;
         this.pgProgListArr.push(x);
        }
-       console.log(this.pgProgListArr);
       });
     });
     this.pgCategory = this.ds.pgCategory;
     this.pgSems = this.ds.pgSems;
   }
-  onEdit(user) {
-    console.log(user);
+  onDetailList(courseName) {
     // tslint:disable-next-line: no-unused-expression
-    this.router.navigate(['/editUser', user.id]);
+    localStorage.setItem('pgCourse', courseName);
+    this.router.navigate(['/pg-detail']);
+
   }
 
 
