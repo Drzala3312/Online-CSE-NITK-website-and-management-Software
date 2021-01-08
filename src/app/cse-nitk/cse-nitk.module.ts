@@ -24,6 +24,9 @@ import { DeptComponent } from './components/achievements/dept/dept.component';
 import { NewsEntryComponent } from './components/data-entry/news-entry/news-entry.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NewsAndEventsComponent } from './components/home/news-and-events/news-and-events.component';
+import { ResearchAndDevComponent } from './components/research/research-and-dev/research-and-dev.component';
+import { MouComponent } from './components/research/mou/mou.component';
+import { ConsultancyComponent } from './components/research/consultancy/consultancy.component';
 
 
 
@@ -40,7 +43,10 @@ import { NewsAndEventsComponent } from './components/home/news-and-events/news-a
     PgDetailComponent,
     FilterPipe,
     NewsEntryComponent,
-    NewsAndEventsComponent
+    NewsAndEventsComponent,
+    ResearchAndDevComponent,
+    MouComponent,
+    ConsultancyComponent
   ],
   imports: [
     CommonModule,
