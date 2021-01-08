@@ -3,28 +3,39 @@
         <mat-tab label="Faculty">
             <br>
             <ng-container *ngFor="let element of faculty">
-                <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                <hr>
                 <div class="row">
                     <ng-container *ngFor="let item of items">
                         <div class="col-xs-4 col-sm-3 col-md-2"
                             *ngIf="item.type == 'Faculty' && item.designation == element">
-                            <img [src]="item.fileSource" alt="No Image"><br>
-                            <label>{{item.name}}</label>
+                            <div class="card" style="width: 10rem;">
+                                <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                <div class="card-body">
+                                    <p class="card-text">{{item.name}}</p>
+                                </div>
+                            </div>
                         </div>
                     </ng-container>
                 </div>
+                <br>
             </ng-container>
         </mat-tab>
         <mat-tab label="Adhoc Faculty">
             <br>
             <ng-container *ngFor="let element of adhoc">
-                <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                <hr>
                 <div class="row">
                     <ng-container *ngFor="let item of items">
                         <div class="col-xs-4 col-sm-3 col-md-2"
                             *ngIf="item.type == 'Adhoc' && item.designation == element">
-                            <img [src]="item.fileSource" alt="No Image"><br>
-                            <label>{{item.name}}</label>
+                            <div class="card" style="width: 10rem;">
+                                <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                <div class="card-body">
+                                    <p class="card-text">{{item.name}}</p>
+                                </div>
+                            </div>
                         </div>
                     </ng-container>
                 </div>
@@ -33,12 +44,13 @@
         <mat-tab label="Staff">
             <br>
             <ng-container *ngFor="let element of staff">
-                <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                <hr>
                 <div class="row">
                     <ng-container *ngFor="let item of items">
                         <div class="col-xs-4 col-sm-3 col-md-2"
                             *ngIf="item.type == 'Staff' && item.designation == element">
-                            <img [src]="item.fileSource" alt="No Image"><br>
+                            <img [src]="item.fileSource" height="150px" alt="No Image"><br>
                             <label>{{item.name}}</label>
                         </div>
                     </ng-container>

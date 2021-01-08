@@ -48,13 +48,18 @@
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
                                     *ngIf="item.type == 'Faculty' && item.designation == element">
-                                    <img [src]="item.fileSource" alt="No Image"><br>
-                                    <label>{{item.name}}</label>
-                                    <i class="fa fa-trash" (click)="deleteFaculties(item.$key)"
-                                        style="cursor: pointer;"></i>
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
                                 </div>
                             </ng-container>
                         </div>
+                        <br>
                     </ng-container>
                 </mat-tab>
                 <mat-tab label="Adhoc Faculty">
@@ -65,13 +70,18 @@
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
                                     *ngIf="item.type == 'Adhoc' && item.designation == element">
-                                    <img [src]="item.fileSource" alt="No Image"><br>
-                                    <label>{{item.name}}</label>
-                                    <i class="fa fa-trash" (click)="deleteFaculties(item.$key)"
-                                        style="cursor: pointer;"></i>
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
                                 </div>
                             </ng-container>
                         </div>
+                        <br>
                     </ng-container>
                 </mat-tab>
                 <mat-tab label="Staff">
@@ -82,13 +92,18 @@
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
                                     *ngIf="item.type == 'Staff' && item.designation == element">
-                                    <img [src]="item.fileSource" alt="No Image"><br>
-                                    <label>{{item.name}}</label>
-                                    <i class="fa fa-trash" (click)="deleteFaculties(item.$key)"
-                                        style="cursor: pointer;"></i>
+                                    <div class="card" style="width: 10rem;">
+                                        <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
+                                        <div class="card-body">
+                                          <p class="card-text">{{item.name}}</p>
+                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                          style="cursor: pointer;"></i>
+                                        </div>
+                                      </div>
                                 </div>
                             </ng-container>
                         </div>
+                        <br>
                     </ng-container>
                 </mat-tab>
             </mat-tab-group>
