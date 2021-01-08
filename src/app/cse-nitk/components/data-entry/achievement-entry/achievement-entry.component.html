@@ -1,0 +1,22 @@
+<div style="margin: 20px 20px; text-align: center;">
+  <h3>Achievement Entry</h3>
+  <form [formGroup]='achievementForm' (ngSubmit)="onSubmit()">
+    <div>
+      <select  formControlName='type'style="width: 550px; margin-bottom: 5px;">
+        <option value="" disabled selected>Select type of Achievement</option>
+        <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+      </select>
+    </div>
+    <div >
+      <textarea style="width: 550px;" formControlName="content" placeholder="Content" rows="4" #content></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!achievementForm.valid}"
+    [disabled]="!achievementForm.valid">Submit</button>
+    <a [routerLink]="['/data-entry']" class="btn btn-primary">
+      Cancel
+  </a>
+  </form>
+
+
+
+</div>

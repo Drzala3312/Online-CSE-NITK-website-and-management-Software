@@ -1,1 +1,9 @@
-<p>dept works!</p>
+<br>
+<p style="margin-left: 20px; font-size: initial;">The department has an outstanding track record of accomplishments.
+  The department has consistently been ranked at the top by various surveys. Apart from that,
+  the faculty and students of the department also receive accolades for research academic activities.</p>
+<mat-list role="list" >
+  <mat-list-item role="listitem"  *ngFor="let course of deptAchievArr " >
+    <small><i class="fa fa-circle" aria-hidden="true"></i></small>&nbsp;{{course.content}}
+  </mat-list-item>
+</mat-list>

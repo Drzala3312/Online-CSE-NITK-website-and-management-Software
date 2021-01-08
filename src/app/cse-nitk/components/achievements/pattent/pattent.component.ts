@@ -2,23 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { DataEntryService } from '../../../../shared/data-entry.service';
 
 @Component({
-  selector: 'app-dept',
-  templateUrl: './dept.component.html',
-  styleUrls: ['./dept.component.scss']
+  selector: 'app-pattent',
+  templateUrl: './pattent.component.html',
+  styleUrls: ['./pattent.component.scss']
 })
-export class DeptComponent implements OnInit {
+export class PattentComponent implements OnInit {
 
-  deptAchievArr: any[];
+  patAchievArr: any[];
   constructor(private ds: DataEntryService) { }
 
   ngOnInit(): void {
     this.ds.getAchievementDataList().snapshotChanges().subscribe(item=>{
-      this.deptAchievArr = [];
+      this.patAchievArr = [];
       item.forEach(element=>{
         var x = element.payload.toJSON();
-       if(x['type'] === 'Department'){
+       if(x['type'] === 'Patent'){
         x["$key"] = element.key;
-        this.deptAchievArr.push(x);
+        this.patAchievArr.push(x);
        }
       });
     });

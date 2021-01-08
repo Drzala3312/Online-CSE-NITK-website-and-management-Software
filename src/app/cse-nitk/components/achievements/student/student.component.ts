@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { DataEntryService } from '../../../../shared/data-entry.service';
-
 @Component({
-  selector: 'app-dept',
-  templateUrl: './dept.component.html',
-  styleUrls: ['./dept.component.scss']
+  selector: 'app-student',
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.scss']
 })
-export class DeptComponent implements OnInit {
+export class StudentComponent implements OnInit {
 
-  deptAchievArr: any[];
+  stdAchievArr: any[];
   constructor(private ds: DataEntryService) { }
 
   ngOnInit(): void {
     this.ds.getAchievementDataList().snapshotChanges().subscribe(item=>{
-      this.deptAchievArr = [];
+      this.stdAchievArr = [];
       item.forEach(element=>{
         var x = element.payload.toJSON();
-       if(x['type'] === 'Department'){
+       if(x['type'] === 'Student'){
         x["$key"] = element.key;
-        this.deptAchievArr.push(x);
+        this.stdAchievArr.push(x);
        }
       });
     });

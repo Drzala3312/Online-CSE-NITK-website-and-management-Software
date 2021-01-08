@@ -33,6 +33,9 @@ import { UgDetailComponent } from './components/programme-and-courses/undergradu
 import { UgListComponent } from './components/programme-and-courses/undergraduate/ug-list/ug-list.component';
 import { DrListComponent } from './components/programme-and-courses/doctoral/dr-list/dr-list.component';
 import { DrDetailComponent } from './components/programme-and-courses/doctoral/dr-detail/dr-detail.component';
+import { AchievementEntryComponent } from './components/data-entry/achievement-entry/achievement-entry.component';
+import { StudentComponent } from './components/achievements/student/student.component';
+import { PattentComponent } from './components/achievements/pattent/pattent.component';
 
 
 
@@ -59,7 +62,10 @@ import { DrDetailComponent } from './components/programme-and-courses/doctoral/d
     UgDetailComponent,
     UgListComponent,
     DrListComponent,
-    DrDetailComponent
+    DrDetailComponent,
+    AchievementEntryComponent,
+    StudentComponent,
+    PattentComponent
   ],
   imports: [
     CommonModule,
