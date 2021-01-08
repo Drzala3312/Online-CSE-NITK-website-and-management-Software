@@ -12,6 +12,8 @@ export class AchievementEntryComponent implements OnInit {
   achievArr: any[];
   types: string[] = ['Department','Student','Patent'];
   isUpdate= false;
+  key;
+  pageOfItems: Array<any>;
   constructor(private formbuilder: FormBuilder,
     private ds: DataEntryService) { }
 
@@ -41,11 +43,28 @@ export class AchievementEntryComponent implements OnInit {
     this.isUpdate=false;
     this.achievementForm.reset();
   }
-  editAchieve(item){
+  //Edit icon event
+  editAchieve(item,content,select){
     this.isUpdate = true;
-    this.achievementForm = item;
+    //this.achievementForm = item;
+    content.value = item.content;
+    select.value = item.type;
+    this.key = item.$key;
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+}
+  //Update in database
+  updateAchieve(content,select){
+    var item = {
+      content: content.value,
+      type: select.value
+    }
+    this.ds.editAchievementDataEntry(this.key,item);
+    this.clearData();
+  }
   deleteAchieve(key){
     this.ds.deleteAchievementDataEntry(key);
   }

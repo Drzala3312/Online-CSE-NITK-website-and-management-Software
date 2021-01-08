@@ -45,10 +45,11 @@ export class DataEntryService {
     this.achievementDatalist = this.firebasedb.list('achievement');
     this.achievementDatalist.push(entry)
   }
-  editAchievementDataEntry(entry,key) {
+  editAchievementDataEntry(key,entry) {
     this.achievementDatalist = this.firebasedb.list('achievement');
     this.achievementDatalist.update(key,entry);
   }
+
   deleteAchievementDataEntry(key) {
     this.achievementDatalist = this.firebasedb.list('achievement');
     if (confirm('Are you Sure!')) {
