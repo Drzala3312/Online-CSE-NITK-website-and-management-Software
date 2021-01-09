@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from '../shared/filter.pipe';
 import {MatButtonModule} from '@angular/material/button';
 import { FilterUgPipe } from '../shared/filter-ug.pipe';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 import { CseNitkRoutingModule } from './cse-nitk-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -84,7 +85,9 @@ import { PattentComponent } from './components/achievements/pattent/pattent.comp
     MatTabsModule,
     MatIconModule,
     MatButtonModule,
-    JwPaginationModule
+    JwPaginationModule,
+    CarouselModule,
+    WavesModule
   ]
 })
 export class CseNitkModule { }
