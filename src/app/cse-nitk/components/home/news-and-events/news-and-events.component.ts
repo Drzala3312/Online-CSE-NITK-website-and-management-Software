@@ -35,9 +35,9 @@ export class NewsAndEventsComponent implements OnInit {
   }
 
   pageIndex: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 5;
   lowValue: number = 0;
-  highValue: number = 10;
+  highValue: number = 5;
 
   getPaginatorData(event) {
     console.log(event);
