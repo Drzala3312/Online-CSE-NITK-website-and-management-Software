@@ -30,10 +30,10 @@ export class ResearchEntryComponent implements OnInit {
     this.typeValue = event.target.value;
   }
   onSubmit() {
-    this.ds.addresearchDataEntry(this.researchform)
+    this.ds.addresearchDataEntry(this.researchform.value)
     alert("data added successfully!");
     this.researchform.reset();
-  
+
   }
 
 }
