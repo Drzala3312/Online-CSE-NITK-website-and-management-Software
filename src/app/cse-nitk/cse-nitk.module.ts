@@ -39,6 +39,7 @@ import { DrDetailComponent } from './components/programme-and-courses/doctoral/d
 import { AchievementEntryComponent } from './components/data-entry/achievement-entry/achievement-entry.component';
 import { StudentComponent } from './components/achievements/student/student.component';
 import { PattentComponent } from './components/achievements/pattent/pattent.component';
+import { ResearchEntryComponent } from './components/data-entry/research-entry/research-entry.component';
 
 
 
@@ -69,7 +70,8 @@ import { PattentComponent } from './components/achievements/pattent/pattent.comp
     DrDetailComponent,
     AchievementEntryComponent,
     StudentComponent,
-    PattentComponent
+    PattentComponent,
+    ResearchEntryComponent
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,7 @@ export class DataEntryService {
   progCourse: AngularFireList<any>;
   achievementDatalist: AngularFireList<any>;
   facultiesList: AngularFireList<any>;
-
+  researchList: AngularFireList<any>;
   types = ['Postgraduate', 'Undergraduate', 'Doctoral'];
   ugCategory = [
     'Engineering Science Core (ESC)',
@@ -60,7 +60,30 @@ export class DataEntryService {
       })
     }
   }
+  getresearchDataList() {
+    this.researchList = this.firebasedb.list('research');
+    return this.researchList;
+  }
 
+  addresearchDataEntry(entry) {
+    this.researchList = this.firebasedb.list('research');
+    this.researchList.push(entry)
+  }
+  editresearchDataEntry(key,entry) {
+    this.researchList = this.firebasedb.list('research');
+    this.researchList.update(key,entry);
+  }
+
+  deleteresearchDataEntry(key) {
+    this.researchList = this.firebasedb.list('research');
+    if (confirm('Are you Sure!')) {
+      this.achievementDatalist.remove(key).then(res => {
+        console.log("Deleted");
+      }).catch(err => {
+        console.log("err");
+      })
+    }
+  }
 
   getProgrammeCourseList() {
     this.progCourse = this.firebasedb.list('programme_and_courses');
