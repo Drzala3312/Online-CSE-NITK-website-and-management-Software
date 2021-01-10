@@ -68,8 +68,8 @@
           <label for="dept">Department: </label>
           <input type="text" formControlName="dept" class="form-control">
         </div>
-          <button type="submit" class="btn btn-primary" *ngIf='isUpdate' [ngClass]="{'disabled':!programmeCoursesForm.valid}"
-          [disabled]="!programmeCoursesForm.valid">Submit</button>
+          <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!programmeCoursesForm.valid}"
+          [disabled]="!programmeCoursesForm.valid">Submit</button> &nbsp; &nbsp;
           <a [routerLink]="['/data-entry']" class="btn btn-primary">
             Cancel
         </a>
