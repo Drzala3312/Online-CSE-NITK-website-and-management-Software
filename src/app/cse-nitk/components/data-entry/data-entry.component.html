@@ -1,9 +1,39 @@
-<mat-tab-group animationDuration="0ms">
-  <mat-tab label="News"><app-news-entry></app-news-entry></mat-tab>
-  <mat-tab label="Porgramme and Courses"> <app-pc-entry></app-pc-entry> </mat-tab>
-  <mat-tab label="Faculties"> <app-faculties-entry></app-faculties-entry> </mat-tab>
-  <mat-tab label="Achievement"> <app-achievement-entry></app-achievement-entry> </mat-tab>
-  <mat-tab label="Research"> <app-research-entry></app-research-entry> </mat-tab>
-</mat-tab-group>
+<ng-container *ngIf="!isAuthenticated">
+  <div style="width:40%; min-width: 400px; margin:0 auto;">
+    <div class="div1">
+      <h2><b>Member Login</b></h2>
 
+      <input type="text" class="form-control" placeholder="Username" name="" id="" #uname> <br>
+      <input type="password" class="form-control" placeholder="Password" name="" id="" #pwd> <br>
+      <label style="font-weight: bold; color: red;" *ngIf="invalid">Invalid username or Password</label> <br>
+      <button mat-raised-button color="primary" (click)="login(uname,pwd)">Login</button>
+    </div>
+  </div>
+</ng-container>
 
+<ng-container *ngIf="isAuthenticated">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="News">
+      <app-news-entry></app-news-entry>
+    </mat-tab>
+    <mat-tab label="Porgramme and Courses">
+      <app-pc-entry></app-pc-entry>
+    </mat-tab>
+    <mat-tab label="Faculties">
+      <app-faculties-entry></app-faculties-entry>
+    </mat-tab>
+    <mat-tab label="Achievement">
+      <app-achievement-entry></app-achievement-entry>
+    </mat-tab>
+    <mat-tab label="Research">
+      <app-research-entry></app-research-entry>
+    </mat-tab>
+    <mat-tab disabled>
+      <ng-template mat-tab-label>
+        <button mat-icon-button (click)="logout()" style="color: red;">
+          <mat-icon>power_settings_new</mat-icon> Logout
+        </button>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

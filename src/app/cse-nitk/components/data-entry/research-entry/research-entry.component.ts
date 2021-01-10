@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataEntryService } from 'src/app/shared/data-entry.service';
@@ -13,10 +12,10 @@ export class ResearchEntryComponent implements OnInit {
     private formbuilder: FormBuilder,
     private ds: DataEntryService) { }
   public researchform: FormGroup;
-  typeValue='Research';
+  typeValue = 'Research';
   ngOnInit(): void {
     this.researchform = this.formbuilder.group({
-      type: ['',Validators.required],
+      type: ['', Validators.required],
       consultancy: [''],
       guide: [''],
       agency: [''],

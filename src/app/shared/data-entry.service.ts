@@ -13,6 +13,8 @@ export class DataEntryService {
   achievementDatalist: AngularFireList<any>;
   facultiesList: AngularFireList<any>;
   researchList: AngularFireList<any>;
+  user: AngularFireList<any>;
+
   types = ['Postgraduate', 'Undergraduate', 'Doctoral'];
   ugCategory = [
     'Engineering Science Core (ESC)',
@@ -127,4 +129,15 @@ export class DataEntryService {
       console.log("err");
     })
   }
+
+  getUser() {
+    this.user = this.firebasedb.list('user');
+    return this.user;
+  }
+
+  addUser(entry) {
+    this.user = this.firebasedb.list('user');
+    this.user.push(entry);
+  }
+
 }
