@@ -70,6 +70,7 @@
         </div>
           <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!programmeCoursesForm.valid}"
           [disabled]="!programmeCoursesForm.valid">Submit</button> &nbsp; &nbsp;
+          <button mat-raised-button color="warn" (click)="clearData()">Clear</button>&nbsp; &nbsp;
           <a [routerLink]="['/data-entry']" class="btn btn-primary">
             Cancel
         </a>
@@ -78,6 +79,17 @@
     <div class="col">
       <div style="margin: 20px 20px 20px 20px;">
         <mat-tab-group animationDuration="0ms">
+          <mat-tab label="Undergraduate">
+            <br>
+            <ng-container *ngFor="let element of ugProgListArr">
+                <label style="font-size: large;">{{element.courseName}}</label>
+                <i (click)="editPC(element)" class="fa fa-pencil" style="cursor: pointer;"
+                title="Edit"></i> &nbsp;
+              <i (click)="deletePc(element.$key)" class="fa fa-trash" style="cursor: pointer;" title="Delete"></i>
+              <hr>
+                <br>
+            </ng-container>
+          </mat-tab>
             <mat-tab label="PostGraduate">
                 <br>
                 <ng-container *ngFor="let element of pgProgListArr">
@@ -89,17 +101,7 @@
                     <br>
                 </ng-container>
             </mat-tab>
-            <mat-tab label="Undergraduate">
-              <br>
-              <ng-container *ngFor="let element of ugProgListArr">
-                  <label style="font-size: large;">{{element.courseName}}</label>
-                  <i (click)="editPC(element)" class="fa fa-pencil" style="cursor: pointer;"
-                  title="Edit"></i> &nbsp;
-                <i (click)="deletePc(element.$key)" class="fa fa-trash" style="cursor: pointer;" title="Delete"></i>
-                <hr>
-                  <br>
-              </ng-container>
-            </mat-tab>
+
             <mat-tab label="Doctoral">
               <br>
               <ng-container *ngFor="let element of drProgListArr">

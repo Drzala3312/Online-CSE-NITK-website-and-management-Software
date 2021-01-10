@@ -1,54 +1,169 @@
 <div class="container">
 <br>
-    <form [formGroup]='researchform' (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <h2>Research Form</h2>
-        <label for="type">Type</label>&nbsp;&nbsp;
-        <select class="form-control" formControlName='type' (change)="onChange($event)">
-          <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
-        </select>
-      </div>
-
-      <ng-container *ngIf="typeValue === 'Consultancy'">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]='researchform' (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="consultancy">Title of Consultancy: </label>
-            <input type="text" formControlName="consultancy" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="guide">Name of the Guide/ Investigator: </label>
-            <input type="text" formControlName="guide" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="agency">Funding Agency: </label>
-            <input type="text" formControlName="agency" class="form-control">
+          <h2>Research Form</h2>
+          <label for="type">Type</label>&nbsp;&nbsp;
+          <select class="form-control" formControlName='type' (change)="onChange($event)">
+            <option value="" disabled selected>Select type of Reserach</option>
+            <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
 
-          </div>
+        <ng-container *ngIf="typeValue === 'Consultancy'">
           <div class="form-group">
-            <label for="namestudent">Name of the Student involved: </label>
-            <input type="text" formControlName="namestudent" class="form-control">
-          </div>
+              <label for="consultancy">Title of Consultancy: </label>
+              <input type="text" formControlName="consultancy" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="guide">Name of the Guide/ Investigator: </label>
+              <input type="text" formControlName="guide" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="agency">Funding Agency: </label>
+              <input type="text" formControlName="agency" class="form-control">
+
+            </div>
+            <div class="form-group">
+              <label for="namestudent">Name of the Student involved: </label>
+              <input type="text" formControlName="namestudent" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="status">Status/ Amt.: </label>
+              <input type="text" formControlName="status" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="year">Year: </label>
+              <input type="text" formControlName="year" class="form-control">
+            </div>
+        </ng-container>
+        <ng-container *ngIf="typeValue === 'Research' || typeValue ===''">
           <div class="form-group">
-            <label for="status">Status/ Amt.: </label>
-            <input type="text" formControlName="status" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="year">Year: </label>
-            <input type="text" formControlName="year" class="form-control">
-          </div>
-      </ng-container>
-      <ng-container *ngIf="typeValue === 'Research'">
-        <div class="form-group">
-            <textarea class="form-control" rows="4" formControlName="content" placeholder="Content" ></textarea>
-          </div>
-      </ng-container>
+              <textarea class="form-control" rows="4" formControlName="content" placeholder="Content" ></textarea>
+            </div>
+        </ng-container>
 
 
+        <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!researchform.valid}"
+          [disabled]="!researchform.valid">Submit</button> &nbsp; &nbsp;
+          <button mat-raised-button color="warn" type="reset" (click)="clearData()">Clear</button>&nbsp; &nbsp;
+          <a [routerLink]="['/data-entry']" class="btn btn-primary">
+            Cancel
+        </a>
+      </form>
+    </div>
+    <div class="col">
+      <div style="margin: 20px 20px 20px 20px;">
+        <mat-tab-group animationDuration="0ms">
+          <mat-tab label="R & D Projects">
+            <div class="card">
+              <div class="card-body">
+                <div *ngFor="let item of projectList">
+                  <b> {{item.type}} Achievement:</b> {{item.content}}
+                  <i (click)="editResearch(item)" class="fa fa-pencil" style="cursor: pointer;"
+                    title="Edit"></i> &nbsp;
+                  <i (click)="deleteResearch(item.$key)" class="fa fa-trash" style="cursor: pointer;" title="Delete"></i>
+                  <hr>
+                </div>
+                <div class="card-footer pb-0 pt-3 pr-1">
+                  <jw-pagination [items]="projectList" (changePage)="onChangePage($event)" [pageSize]=5 [maxPages]=3>
+                  </jw-pagination>
+              </div>
+              </div>
+            </div>
 
+          </mat-tab>
+            <mat-tab label="Consultancy">
+              <mat-table #table mat-table [dataSource]="consultancyListArr" class="mat-elevation-z8" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header="id">Details
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
+                  </ng-container>
+                <ng-container matColumnDef="toc">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="toc">Title of Consultancy
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
 
-      <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!researchform.valid}"
-        [disabled]="!researchform.valid">Submit</button>
-        <a [routerLink]="['/data-entry']" class="btn btn-primary">
-          Cancel
-      </a>
-    </form>
+                    <span class="table__text">
+                      {{data?.consultancy}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="guide">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="guide">Name of the Guide/ Investigator
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+
+                    <span class="table__text">
+                      {{data?.guide}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fundingAgency">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="fundingAgency">Funding Agency
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+
+                    <span class="table__text">
+                      {{data?.agency}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="student">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="student">Name of the Student involved
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+                    <span class="table__text">
+                      {{(data?.namestudent)}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="status">Status/Amt.
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+                    <span class="table__text">
+                      {{(data?.status)}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="yr">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="yr">Year
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+                    <span class="table__text">
+                      {{(data?.year)}}
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header="action">#
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let data">
+                    <span (click)="editResearch(data)" style="cursor:pointer;">
+                      <i class="fa fa-pencil"></i></span> &nbsp; &nbsp;
+                    <span (click)="deleteResearch(data.$key)" style="cursor:pointer;">
+                        <i class="fa fa-trash"></i>
+                   </span>
+                  </mat-cell>
+                </ng-container>
+                <mat-header-row style="background-color:#f3f3f3 ;" *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+            </mat-tab>
+
+        </mat-tab-group>
+    </div>
+    </div>
+  </div>
   </div>
