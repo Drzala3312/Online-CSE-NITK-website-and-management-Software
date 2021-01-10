@@ -1,1 +1,5 @@
-<p>research-and-dev works!</p>
+<mat-list role="list">
+  <mat-list-item role="listitem"  *ngFor="let item of projectList " >
+   <small> <i class="fa fa-circle" aria-hidden="true"></i></small>&nbsp;{{item.content}}
+  </mat-list-item>
+</mat-list>
