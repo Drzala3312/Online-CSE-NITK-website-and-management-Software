@@ -45,9 +45,9 @@
 
 
 
-      <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!researchform.valid}"
-        [disabled]="!researchform.valid">Submit</button>
-        <a [routerLink]="['/data-entry']" class="btn btn-primary">
+      <button type="submit" mat-raised-button color="primary" [ngClass]="{'disabled':!researchform.valid}"
+        [disabled]="!researchform.valid">Submit</button> &nbsp;
+        <a [routerLink]="['/data-entry']" mat-raised-button color="warn">
           Cancel
       </a>
     </form>

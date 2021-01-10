@@ -6,3 +6,25 @@
    // height: 60px;
    // line-height: 60px;
  }
+
+ i{
+   cursor: pointer;
+ }
+   /* Unvisited link  */
+ a:visited {color:black;}   
+
+ .fa-twitter:hover{
+   color:#1DA1F2;
+ }
+ .fa-facebook:hover{
+  color:	#4267B2;
+}
+.fa-google-plus:hover{
+  color:red;
+}
+.fa-feed:hover{
+  color:#ee802f;
+}
+.fa-vimeo:hover{
+  color:#19B7EA;
+}
