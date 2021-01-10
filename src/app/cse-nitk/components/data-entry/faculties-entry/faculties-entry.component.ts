@@ -73,4 +73,11 @@ export class FacultiesEntryComponent implements OnInit {
       this.dbService.deleteFaculties(key);
     }
   }
+
+  clearData(type,des,name,file){
+    type.value = null;
+    des.value = null;
+    name.value = null;
+    file.value = null;
+  }
 }

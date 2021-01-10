@@ -5,13 +5,13 @@
                 <div class="form-group">
                     <h2>Programme and Courses</h2>
                     <label for="type">Type</label>&nbsp;&nbsp;
-                    <select class="form-control" formControlName='type' (change)="onChange($event)">
+                    <select class="form-control" formControlName='type' (change)="onChange($event)" #type>
                         <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="sem">Designation</label>
-                    <select class="form-control" formControlName='designation'>
+                    <select class="form-control" formControlName='designation' #des>
                         <ng-container *ngIf="typeValue === 'Faculty'">
                             <option *ngFor="let item of faculty" value="{{item}}">{{item}}</option>
                         </ng-container>
@@ -27,13 +27,14 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" formControlName='name'>
+                    <input type="text" class="form-control" formControlName='name' #name>
                 </div>
                 <div class="form-group">
-                    <input type="file" class="form-control" accept="image/*" (change)="selectFile($event)">
+                    <input type="file" class="form-control" accept="image/*" (change)="selectFile($event)" #file> 
                 </div>
                 <button type="submit" mat-raised-button color="primary" [ngClass]="{'disabled':!facultiesForm.valid}"
-                    [disabled]="!facultiesForm.valid">Submit</button>
+                    [disabled]="!facultiesForm.valid">Submit</button> &nbsp;&nbsp;
+                <button type="button" mat-raised-button color="warn" (click)="clearData(type,des,name,file)">Clear</button>
             </div>
         </form>
     </div>
@@ -43,7 +44,8 @@
                 <mat-tab label="Faculty">
                     <br>
                     <ng-container *ngFor="let element of faculty">
-                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                        <hr>
                         <div class="row">
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
@@ -51,11 +53,11 @@
                                     <div class="card" style="width: 10rem;">
                                         <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
                                         <div class="card-body">
-                                          <p class="card-text">{{item.name}}</p>
-                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
-                                          style="cursor: pointer;"></i>
+                                            <p class="card-text">{{item.name}}</p>
+                                            <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                                style="cursor: pointer;"></i>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                             </ng-container>
                         </div>
@@ -65,7 +67,8 @@
                 <mat-tab label="Adhoc Faculty">
                     <br>
                     <ng-container *ngFor="let element of adhoc">
-                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                        <hr>
                         <div class="row">
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
@@ -73,11 +76,11 @@
                                     <div class="card" style="width: 10rem;">
                                         <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
                                         <div class="card-body">
-                                          <p class="card-text">{{item.name}}</p>
-                                          <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
-                                          style="cursor: pointer;"></i>
+                                            <p class="card-text">{{item.name}}</p>
+                                            <i class="fa fa-trash" title="=Delete" (click)="deleteFaculties(item.$key)"
+                                                style="cursor: pointer;"></i>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                             </ng-container>
                         </div>
@@ -87,7 +90,8 @@
                 <mat-tab label="Staff">
                     <br>
                     <ng-container *ngFor="let element of staff">
-                        <label style="font-weight: bold; font-size: large;">{{element}}</label><hr>
+                        <label style="font-weight: bold; font-size: large;">{{element}}</label>
+                        <hr>
                         <div class="row">
                             <ng-container *ngFor="let item of items">
                                 <div class="col-sm-6 col-md-4"
@@ -95,11 +99,11 @@
                                     <div class="card" style="width: 10rem;">
                                         <img class="card-img-top" height="150px" [src]="item.fileSource" alt="No Image">
                                         <div class="card-body">
-                                          <p class="card-text">{{item.name}}</p>
-                                          <i class="fa fa-trash" title="Delete" (click)="deleteFaculties(item.$key)"
-                                          style="cursor: pointer;"></i>
+                                            <p class="card-text">{{item.name}}</p>
+                                            <i class="fa fa-trash" title="Delete" (click)="deleteFaculties(item.$key)"
+                                                style="cursor: pointer;"></i>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                             </ng-container>
                         </div>
