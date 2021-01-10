@@ -35,7 +35,6 @@ export class PcEntryComponent implements OnInit {
       credits: ['',Validators.required],
       content: ['',Validators.required],
       ref: ['',Validators.required],
-      $key: [''],
       dept: ['Computer Science and Engineering',Validators.required]
     });
 
@@ -78,6 +77,11 @@ export class PcEntryComponent implements OnInit {
 
   }
 
+  clearData(){
+    this.programmeCoursesForm.reset();
+    this.isUpdate= false;
+    this.key = '';
+  }
 onChange(event) {
   this.typeValue = event.target.value;
 }
@@ -86,6 +90,7 @@ editPC(entry){
   this.key = entry.$key;
   this.typeValue = entry.type;
   this.programmeCoursesForm.setValue(entry);
+
 }
 deletePc(key){
   this.ds.removeProgrammeCourseEntry(key);
@@ -103,6 +108,8 @@ onSubmit() {
   }
   if(this.isUpdate && this.key !==''){
     this.ds.editProgrammeCourseEntry(this.programmeCoursesForm.value,this.key);
+    this.key = '';
+    this.isUpdate = false;
   }else {
 
     this.ds.addProgrammeCourseEntry(this.programmeCoursesForm.value);
