@@ -1,14 +1,14 @@
 <div class="container">
-
+<br>
     <form [formGroup]='researchform' (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <h2>consultancy</h2>
+        <h2>Research Form</h2>
         <label for="type">Type</label>&nbsp;&nbsp;
         <select class="form-control" formControlName='type' (change)="onChange($event)">
           <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
         </select>
       </div>
-  
+
       <ng-container *ngIf="typeValue === 'Consultancy'">
         <div class="form-group">
             <label for="consultancy">Title of Consultancy: </label>
@@ -21,7 +21,7 @@
           <div class="form-group">
             <label for="agency">Funding Agency: </label>
             <input type="text" formControlName="agency" class="form-control">
-      
+
           </div>
           <div class="form-group">
             <label for="namestudent">Name of the Student involved: </label>
@@ -41,10 +41,10 @@
             <textarea class="form-control" rows="4" formControlName="content" placeholder="Content" ></textarea>
           </div>
       </ng-container>
-  
-  
-      
-  
+
+
+
+
       <button type="submit" class="btn btn-primary" [ngClass]="{'disabled':!researchform.valid}"
         [disabled]="!researchform.valid">Submit</button>
         <a [routerLink]="['/data-entry']" class="btn btn-primary">
@@ -52,4 +52,3 @@
       </a>
     </form>
   </div>
-  

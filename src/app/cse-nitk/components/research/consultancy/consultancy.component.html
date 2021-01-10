@@ -1,0 +1,80 @@
+<ng-container>
+
+  <mat-table #table mat-table [dataSource]="consultancyListArr" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="id">Details
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="toc">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="toc">Title of Consultancy
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+
+        <span class="table__text">
+          {{data?.consultancy}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="guide">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="guide">Name of the Guide/ Investigator
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+
+        <span class="table__text">
+          {{data?.guide}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fundingAgency">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="fundingAgency">Funding Agency
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+
+        <span class="table__text">
+          {{data?.agency}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="student">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="student">Name of the Student involved
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+        <span class="table__text">
+          {{(data?.namestudent)}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="status">Status/Amt.
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+        <span class="table__text">
+          {{(data?.status)}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="yr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="yr">Year
+      </mat-header-cell>
+      <mat-cell *matCellDef="let data">
+        <span class="table__text">
+          {{(data?.year)}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row style="background-color:#f3f3f3 ;" *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+
+</ng-container>

@@ -16,6 +16,11 @@ export class PcEntryComponent implements OnInit {
   pgCategory;
   ugSems;
   pgSems;
+  isUpdate=false;
+  key = '';
+  pgProgListArr: any[];
+  ugProgListArr: any[];
+  drProgListArr: any[];
   constructor(
     private formbuilder: FormBuilder,
     private ds: DataEntryService) { }
@@ -30,19 +35,61 @@ export class PcEntryComponent implements OnInit {
       credits: ['',Validators.required],
       content: ['',Validators.required],
       ref: ['',Validators.required],
+      $key: [''],
       dept: ['Computer Science and Engineering',Validators.required]
+    });
+
+    this.ds.getProgrammeCourseList().snapshotChanges().subscribe(item=>{
+      this.pgProgListArr = [];
+      item.forEach(element=>{
+        var x = element.payload.toJSON();
+        if(x['type'] === 'Postgraduate'){
+        x["$key"] = element.key;
+        this.pgProgListArr.push(x);
+       }
+      });
+    });
+    this.ds.getProgrammeCourseList().snapshotChanges().subscribe(item=>{
+      this.ugProgListArr = [];
+      item.forEach(element=>{
+        var x = element.payload.toJSON();
+       if(x['type'] === 'Undergraduate'){
+        x["$key"] = element.key;
+        this.ugProgListArr.push(x);
+       }
+      });
+    });
+    this.ds.getProgrammeCourseList().snapshotChanges().subscribe(item=>{
+      this.drProgListArr = [];
+      item.forEach(element=>{
+        var x = element.payload.toJSON();
+       if(x['type'] === 'Doctoral'){
+        x["$key"] = element.key;
+        this.drProgListArr.push(x);
+       }
+      });
     });
     this.types = this.ds.types;
     this.ugCategory = this.ds.ugCategory;
     this.pgCategory = this.ds.pgCategory;
     this.ugSems = this.ds.ugSems;
     this.pgSems = this.ds.pgSems;
+
+
   }
 
 onChange(event) {
   this.typeValue = event.target.value;
 }
-
+editPC(entry){
+  this.isUpdate = true;
+  this.key = entry.$key;
+  this.typeValue = entry.type;
+  this.programmeCoursesForm.setValue(entry);
+}
+deletePc(key){
+  this.ds.removeProgrammeCourseEntry(key);
+}
 
 onSubmit() {
   if(this.typeValue==='Undergraduate'){
@@ -54,7 +101,12 @@ onSubmit() {
       programme: 'Ph.D'
     })
   }
-  this.ds.addProgrammeCourseEntry(this.programmeCoursesForm.value);
+  if(this.isUpdate && this.key !==''){
+    this.ds.editProgrammeCourseEntry(this.programmeCoursesForm.value,this.key);
+  }else {
+
+    this.ds.addProgrammeCourseEntry(this.programmeCoursesForm.value);
+  }
   alert("data added successfully!");
   this.programmeCoursesForm.reset();
 
